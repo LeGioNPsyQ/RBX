@@ -9,7 +9,7 @@ local plr = plrs.LocalPlayer
 local OrionLib = loadstring(game:HttpGet(('https://raw.githubusercontent.com/LeGioNPsyQ/RBX/main/Variables/Vari.lua')))()
 local Window = OrionLib:MakeWindow({Name = "DevilNetWork Hub", HidePremium = true, SaveConfig = true, ConfigFolder = "DevilNetWorkHub"})
 
-require "Variables/100MEvent.lua"
+require "../Variables/100MEvent.lua"
 
 --[[
 	###########################################################################################################
