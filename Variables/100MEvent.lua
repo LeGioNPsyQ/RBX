@@ -1,3 +1,14 @@
+repeat wait() until game:IsLoaded() and game.Players and game.Players.LocalPlayer and game.Players.LocalPlayer.Character
+
+--[[
+	###########################################################################################################
+	#### Variables
+	###########################################################################################################
+]]
+local plrs = game:GetService("Players")
+local plr = plrs.LocalPlayer
+local OrionLib = loadstring(game:HttpGet(('https://raw.githubusercontent.com/LeGioNPsyQ/RBX/main/Variables/Vari.lua')))()
+local Window = OrionLib:MakeWindow({Name = "DevilNetWork Hub", HidePremium = true, SaveConfig = true, ConfigFolder = "DevilNetWorkHub"})
 
 local TABEVENT1 = Window:MakeTab({
 	Name = "100M Event!",
