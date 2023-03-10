@@ -1,4 +1,4 @@
---repeat wait() until game:IsLoaded() and game.Players and game.Players.LocalPlayer and game.Players.LocalPlayer.Character
+repeat wait() until game:IsLoaded() and game.Players and game.Players.LocalPlayer and game.Players.LocalPlayer.Character
 
 --[[
 	###########################################################################################################
@@ -14,7 +14,7 @@ local lpg = plr:WaitForChild("PlayerGui")
 local crg = game:GetService("CoreGui")
 local vu = game:GetService("VirtualUser")
 local OrionLib = loadstring(game:HttpGet(('https://raw.githubusercontent.com/LeGioNPsyQ/RBX/main/Variables/Vari.lua')))()
-local Window = OrionLib:MakeWindow({Name = "DevilNetWork Hub", HidePremium = false, SaveConfig = true, ConfigFolder = "DevilNetWorkHub"})
+local Window = OrionLib:MakeWindow({Name = "DevilNetWork X", HidePremium = false, SaveConfig = false, ConfigFolder = "DevilNetWorkHub"})
 
 
 --[[
@@ -39,7 +39,7 @@ local Farm = Tab:AddSection({
 	Name = "Main Farming!"
 })
 
-AutoClick = Tab:AddToggle({
+local AutoClick = Tab:AddToggle({
 	Name = "Auto Click",
 	Default = false,
 	Save = true,
@@ -82,9 +82,6 @@ spawn(function()
     end
   end)
 
-local RebirthSelected = Tab:AddDropdown("rebirths", { Values = rebirthsTable(), Default = "1", Multi = false, Text = "Rebirths" })
-local Cost = Tab:AddLabel("nil")
-local RebirthSL = Tab:AddToggle("rebirth", { Text = "Auto rebirth", Default = false })
 
 --[[
 	#### FARMING END
@@ -116,13 +113,14 @@ function hatch(name, mode)
   end
   
   local eggchoice;
-  local EggChoice = Tab2:AddDropdown({
-    Name = "Select Eggs",
-    Default = "Please Select The Eggs",
-    Options = EggTable,
-    Callback = function(PetChoice)
-      eggchoice = PetChoice
-    end    
+local EggChoice = Tab2:AddDropdown({
+		Name = "Select Eggs",
+		Default = "Please Select The Eggs",
+		Save = true,
+		Options = EggTable,
+		Callback = function(PetChoice)
+				eggchoice = PetChoice
+		end    
   })
   
   local SelectedMode;
@@ -130,31 +128,23 @@ function hatch(name, mode)
     Name = "Select Egg Opening Mode",
     Default = "Please Egg Opening Mode",
     Options = {"Single", "Triple"},
+	Save = true,
     Callback = function(Option)
       SelectedMode = Option
     end    
   })
 --[[	EGG INFO	]]
 local Egginfo = Tab2:AddLabel("Triple also equals 8 Eggs Hatch")
---[[	DELETE SYSTEM	]]
-local EggDelete = Tab2:AddDropdown("delete_settings", { Values = deleteTable(), Default = "---", Multi = true, Text = "Delete options" })
-local function deleteTable()
-	local items = {}
-	for i, v in pairs(plr.AutoDelete:GetChildren()) do
-		table.insert(items, v.Name)
-	end
-	return items
-end
-
 local AutoHatch = Tab2:AddToggle({
     Name = "Auto Hatch Egg",
     Default = false,
+	Save = true,
     Callback = function(Value)
       getgenv().autohatch = Value 
       while getgenv().autohatch == true do 
       hatch(eggchoice, SelectedMode)
           end
-    end    
+    end
   })
 
   local EggCombo = Tab2:AddLabel(game:GetService("Players").LocalPlayer.PlayerGui.MainUI.EggCombo.Text)
@@ -173,6 +163,8 @@ local Pets = Tab2:AddSection({
 AutoCraft = Tab2:AddToggle({
 	Name = "Auto Craft",
 	Default = false,
+	Save = true,
+	
 	Callback = function(Value)
 		getgenv().Toggle = Value
 		while getgenv().Toggle do
@@ -221,16 +213,17 @@ local GetChests = Tab3:AddButton({
   	end    
 })
 
+local codesTable = {'heaven', 'wow30000', 'magic', '20kthankyou', 'freeluckboost', 'CYBER', 'wow10klikesthanks',
+
+								'freeclicksomg', 'moon', '5klikesthanks', 'wow2500likes', 'already1500likes',
+	                            'thanks500likes', 'RELEASE', 'void', 'nuclear', 'spooky','75kthanks', 'cave','easter','100kthanks','easter2'}
 local GetCodes = Tab3:AddButton({
 	Name = "Collect All Codes",
 	Callback = function()
-		local codesTable = {'heaven', 'wow30000', 'magic', '20kthankyou', 'freeluckboost', 'CYBER', 'wow10klikesthanks',
-	                            'freeclicksomg', 'moon', '5klikesthanks', 'wow2500likes', 'already1500likes',
-	                            'thanks500likes', 'RELEASE', 'void', 'nuclear', 'spooky','75kthanks', 'cave','easter','100kthanks','easter2'}
 	        for _, v in pairs(codesTable) do
 	            rep.Events.Codes:FireServer(v)
 	        end
-    	end)
+    	end
 })
 
 
@@ -388,12 +381,14 @@ local Section2 = Tab4:AddSection({
 
 local Slider = Tab4:AddSlider({
 	Name = "Walk Speed",
-	Min = 16,
+	Min = 48,
 	Max = 400,
 	Default = 48,
 	Color = Color3.fromRGB(255,255,255),
 	Increment = 1,
 	ValueName = "Speed",
+	Save = true,
+	
 	Callback = function(Value)
     game.Players.LocalPlayer.Character.Humanoid.WalkSpeed = Value
 	end    
@@ -407,6 +402,7 @@ local Gravity = Tab4:AddSlider({
 	Color = Color3.fromRGB(255,255,255),
 	Increment = 1,
 	ValueName = "Gravity",
+	Save = true,
 	Callback = function(Value)
     game.Workspace.Gravity = Value
 	end    
@@ -420,6 +416,8 @@ local FOV = Tab4:AddSlider({
 	Color = Color3.fromRGB(255,255,255),
 	Increment = 1,
 	ValueName = "Gravity",
+	
+Save = true,
 	Callback = function(Value)
     game:GetService'Workspace'.Camera.FieldOfView = Value
 	end    
@@ -451,47 +449,13 @@ local Discord = Tab5:AddButton({
 ]]
 local LabelAFK = Tab5:AddParagraph("Anti AFK","Is Always Active")
   
--- { Loops } --
-rs.RenderStepped:Connect(function()
-	if Toggles.wheel.Value then
-		if wrk.Scripts.DailySpin.Billboard.BillboardGui.Countdown.Text == "Ready to Claim!" then
-			Spin:InvokeServer()
-		end
-	end
-	if Toggles.upgrade.Value then
-		for i, v in pairs(Options.upgrades.Value) do
-			Upgrade:InvokeServer(i)
-		end
-	end
-	if Toggles.potion.Value then
-		for i, v in pairs(Options.potions.Value) do
-			Potion:FireServer(i)
-		end
-	end
-	Cost:SetText(lpg.MainUI.RebirthFrame.Top.Holder.ScrollingFrame[Options.rebirths.Value].Main.Label.Text)
-	if Toggles.rebirth.Value then
-		Rebirth:FireServer(tonumber(Options.rebirths.Value))
-	end
-	if Toggles.delete.Value then
-		for i, v in pairs(Options.delete_settings.Value) do
-			plr.AutoDelete[i].Value = true
-		end
-		else
-			for i, v in pairs(Options.delete_settings.Value) do
-				plr.AutoDelete[i].Value = false
-			end
-		end
-		if Toggles.auto_craft.Value then
-			rep.Functions.Request:InvokeServer('CraftAll', {})
-		end
-		plr.Character.Humanoid.WalkSpeed = Options.walkspeed.Value
-		plr.Character.Humanoid.JumpHeight = Options.jumppower.Value
-	end)
-end
+  
 OrionLib:MakeNotification({
 	Name = "DevilNetWork Hub!",
 	Content = "Fully Loaded",
-	Image = "rbxassetid://4838075912",
+	Image = "rbxassetid://8375346674",
 	Time = 3
 })
+
+--[[  Das K beim Laden "4838075912 " ]]
 OrionLib:Init()
