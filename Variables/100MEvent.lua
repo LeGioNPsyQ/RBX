@@ -1,4 +1,4 @@
-local Window = OrionLib:MakeWindow({Name = "DevilNetWork Hub", HidePremium = true, SaveConfig = true, ConfigFolder = "DevilNetWorkHub"})
+local Window = OrionLib:MakeWindow()
 local TABEVENT1 = Window:MakeTab({
 	Name = "100M Event!",
 	Icon = "rbxassetid://7657243214",
