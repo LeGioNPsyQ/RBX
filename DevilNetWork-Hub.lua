@@ -16,6 +16,7 @@ local Window = OrionLib:MakeWindow({Name = "DevilNetWork Hub", HidePremium = tru
 	#### EVENTS
 ]]
 include("Variables/100MEvent.lua")
+require "100MEvent.lua"
 --local EVENTs = loadstring(game:HttpGet(('https://raw.githubusercontent.com/LeGioNPsyQ/RBX/main/Variables/100MEvent.lua')))()
 
 
