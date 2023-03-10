@@ -1,4 +1,5 @@
 repeat wait() until game:IsLoaded() and game.Players and game.Players.LocalPlayer and game.Players.LocalPlayer.Character
+
 --[[
 	###########################################################################################################
 	#### Variables
@@ -9,17 +10,20 @@ local plr = plrs.LocalPlayer
 local OrionLib = loadstring(game:HttpGet(('https://raw.githubusercontent.com/LeGioNPsyQ/RBX/main/Variables/Vari.lua')))()
 local Window = OrionLib:MakeWindow({Name = "DevilNetWork Hub", HidePremium = true, SaveConfig = true, ConfigFolder = "DevilNetWorkHub"})
 
-require "../Variables/100MEvent.lua"
 
 --[[
 	###########################################################################################################
-	#### TABS
+	#### EVENTS
 ]]
-local Tab2 = Window:MakeTab({	Name = "Farming",Icon = "rbxassetid://11911613779",PremiumOnly = false	})
-local Tab3 = Window:MakeTab({	Name = "Pets",Icon = "rbxassetid://9194077649",PremiumOnly = false	})
-local Tab4 = Window:MakeTab({	Name = "Misc I",Icon = "rbxassetid://9525535512",PremiumOnly = false	})
-local Tab5 = Window:MakeTab({	Name = "Misc II",Icon = "rbxassetid://9525535512",PremiumOnly = false	})
-local Tab6 = Window:MakeTab({	Name = "Information",Icon = "rbxassetid://5128872300",PremiumOnly = false	})
+include( "main/Variables/100MEvent.lua" )
+--local EVENTs = loadstring(game:HttpGet(('https://raw.githubusercontent.com/LeGioNPsyQ/RBX/main/Variables/100MEvent.lua')))()
+
+
+local Tab2 = Window:MakeTab({	Name = "Farming",	Icon = "rbxassetid://11911613779",	PremiumOnly = false	})
+local Tab3 = Window:MakeTab({	Name = "Pets",		Icon = "rbxassetid://9194077649",	PremiumOnly = false	})
+local Tab4 = Window:MakeTab({	Name = "Misc I",	Icon = "rbxassetid://9525535512",	PremiumOnly = false	})
+local Tab5 = Window:MakeTab({	Name = "Misc II",	Icon = "rbxassetid://9525535512",	PremiumOnly = false	})
+local Tab6 = Window:MakeTab({	Name = "Information",	Icon = "rbxassetid://5128872300",	PremiumOnly = false	})
 --[[
 	#### Variables END
 	###########################################################################################################
