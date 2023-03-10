@@ -1,38 +1,35 @@
+local UserInputService = game:GetService("UserInputService")
+local TweenService = game:GetService("TweenService")
+local RunService = game:GetService("RunService")
+local LocalPlayer = game:GetService("Players").LocalPlayer
+local Mouse = LocalPlayer:GetMouse()
+local HttpService = game:GetService("HttpService")
+local OrionLib = {
+	Elements = {},
+	ThemeObjects = {},
+	Connections = {},
+	Flags = {},
+	Themes = {
+		Default = {
+			Main = Color3.fromRGB(0, 0, 0),
+			Second = Color3.fromRGB(0, 0, 0),
+			Stroke = Color3.fromRGB(60, 60, 60),
+			Divider = Color3.fromRGB(60, 60, 60),
+			Text = Color3.fromRGB(255, 0, 0),
+			TextDark = Color3.fromRGB(200, 150, 150)
+		}
+	},
+	SelectedTheme = "Default",
+	Folder = nil,
+	SaveCfg = false
+}
 
+--Feather Icons https://github.com/evoincorp/lucideblox/tree/master/src/modules/util - Created by 7kayoh
+local Icons = {}
 
-	local UserInputService = game:GetService("UserInputService")
-	local TweenService = game:GetService("TweenService")
-	local RunService = game:GetService("RunService")
-	local LocalPlayer = game:GetService("Players").LocalPlayer
-	local Mouse = LocalPlayer:GetMouse()
-	local HttpService = game:GetService("HttpService")
-
-	local OrionLib = {
-		Elements = {},
-		ThemeObjects = {},
-		Connections = {},
-		Flags = {},
-		Themes = {
-			Default = {
-				Main = Color3.fromRGB(0, 0, 0),
-				Second = Color3.fromRGB(0, 0, 0),
-				Stroke = Color3.fromRGB(60, 60, 60),
-				Divider = Color3.fromRGB(60, 60, 60),
-				Text = Color3.fromRGB(255, 0, 0),
-				TextDark = Color3.fromRGB(200, 150, 150)
-			}
-		},
-		SelectedTheme = "Default",
-		Folder = nil,
-		SaveCfg = false
-	}
-
-	--Feather Icons https://github.com/evoincorp/lucideblox/tree/master/src/modules/util - Created by 7kayoh
-	local Icons = {}
-
-	local Success, Response = pcall(function()
-		Icons = HttpService:JSONDecode(game:HttpGetAsync("https://raw.githubusercontent.com/evoincorp/lucideblox/master/src/modules/util/icons.json")).icons
-	end)
+local Success, Response = pcall(function()
+	Icons = HttpService:JSONDecode(game:HttpGetAsync("https://raw.githubusercontent.com/evoincorp/lucideblox/master/src/modules/util/icons.json")).icons
+end)
 
 	if not Success then
 		warn("\nOrion Library - Failed to load Feather Icons. Error code: " .. Response .. "\n")
@@ -481,8 +478,8 @@
 		WindowConfig.IntroText = WindowConfig.IntroText or "DevilNetWork Hub"
 		WindowConfig.CloseCallback = WindowConfig.CloseCallback or function() end
 		WindowConfig.ShowIcon = WindowConfig.ShowIcon or false
-		WindowConfig.Icon = WindowConfig.Icon or "rbxassetid://4838075912"
-		WindowConfig.IntroIcon = WindowConfig.IntroIcon or "rbxassetid://4838075912"
+--		WindowConfig.Icon = WindowConfig.Icon or "rbxassetid://4838075912"
+--		WindowConfig.IntroIcon = WindowConfig.IntroIcon or "rbxassetid://4838075912"
 		OrionLib.Folder = WindowConfig.ConfigFolder
 		OrionLib.SaveCfg = WindowConfig.SaveConfig
 
