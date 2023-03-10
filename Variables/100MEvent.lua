@@ -7,7 +7,6 @@ repeat wait() until game:IsLoaded() and game.Players and game.Players.LocalPlaye
 ]]
 local plrs = game:GetService("Players")
 local plr = plrs.LocalPlayer
-local Window = OrionLib:MakeWindow({Name = "DevilNetWork Hub", HidePremium = true, SaveConfig = true, ConfigFolder = "DevilNetWorkHub"})
 
 local TABEVENT1 = Window:MakeTab({
 	Name = "100M Event!",
