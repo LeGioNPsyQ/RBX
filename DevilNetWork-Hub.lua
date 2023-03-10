@@ -15,10 +15,9 @@ local Window = OrionLib:MakeWindow({Name = "DevilNetWork Hub", HidePremium = tru
 	###########################################################################################################
 	#### EVENTS
 ]]
-require "100MEvent.lua"
+loadstring(game:HttpGet(('https://raw.githubusercontent.com/LeGioNPsyQ/RBX/main/Variables/100MEvent.lua')))()
 local Tab2 = Window:MakeTab({	Name = "Farming",	Icon = "rbxassetid://11911613779",	PremiumOnly = false	})
 local Tab3 = Window:MakeTab({	Name = "Pets",		Icon = "rbxassetid://9194077649",	PremiumOnly = false	})
-loadstring(game:HttpGet(('https://raw.githubusercontent.com/LeGioNPsyQ/RBX/main/Variables/100MEvent.lua')))()
 local Tab4 = Window:MakeTab({	Name = "Misc I",	Icon = "rbxassetid://9525535512",	PremiumOnly = false	})
 local Tab5 = Window:MakeTab({	Name = "Misc II",	Icon = "rbxassetid://9525535512",	PremiumOnly = false	})
 local Tab6 = Window:MakeTab({	Name = "Information",	Icon = "rbxassetid://5128872300",	PremiumOnly = false	})
