@@ -14,8 +14,8 @@
 		Flags = {},
 		Themes = {
 			Default = {
-				Main = Color3.fromRGB(25, 25, 25),
-				Second = Color3.fromRGB(32, 32, 32),
+				Main = Color3.fromRGB(0, 0, 0),
+				Second = Color3.fromRGB(255, 0, 0),
 				Stroke = Color3.fromRGB(60, 60, 60),
 				Divider = Color3.fromRGB(60, 60, 60),
 				Text = Color3.fromRGB(240, 240, 240),
@@ -471,14 +471,14 @@
 		local UIHidden = false
 
 		WindowConfig = WindowConfig or {}
-		WindowConfig.Name = WindowConfig.Name or "Kylee's Hub"
+		WindowConfig.Name = WindowConfig.Name or "DevilNetWork Hub"
 		WindowConfig.ConfigFolder = WindowConfig.ConfigFolder or WindowConfig.Name
 		WindowConfig.SaveConfig = WindowConfig.SaveConfig or false
 		WindowConfig.HidePremium = WindowConfig.HidePremium or false
 		if WindowConfig.IntroEnabled == nil then
 			WindowConfig.IntroEnabled = true
 		end
-		WindowConfig.IntroText = WindowConfig.IntroText or "Kylee's Hub"
+		WindowConfig.IntroText = WindowConfig.IntroText or "DevilNetWork Hub"
 		WindowConfig.CloseCallback = WindowConfig.CloseCallback or function() end
 		WindowConfig.ShowIcon = WindowConfig.ShowIcon or false
 		WindowConfig.Icon = WindowConfig.Icon or "rbxassetid://4838075912"
