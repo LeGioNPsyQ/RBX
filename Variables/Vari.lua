@@ -478,8 +478,8 @@ end)
 		WindowConfig.IntroText = WindowConfig.IntroText or "DevilNetWork Hub"
 		WindowConfig.CloseCallback = WindowConfig.CloseCallback or function() end
 		WindowConfig.ShowIcon = WindowConfig.ShowIcon or false
-		WindowConfig.Icon = WindowConfig.Icon or "rbxassetid://4838075912"
-		WindowConfig.IntroIcon = WindowConfig.IntroIcon or "rbxassetid://4838075912"
+		WindowConfig.Icon = WindowConfig.Icon or "rbxassetid://8375346674"
+		WindowConfig.IntroIcon = WindowConfig.IntroIcon or "rbxassetid://8375346674"
 		OrionLib.Folder = WindowConfig.ConfigFolder
 		OrionLib.SaveCfg = WindowConfig.SaveConfig
 
