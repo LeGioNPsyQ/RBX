@@ -75,6 +75,11 @@ spawn(function()
   RebirthStatus:Set("Rebirth Buttons Unlocked : " .. game:GetService("Players").LocalPlayer.Upgrades.RebirthButtons.Value)
     end
   end)
+
+local RebirthSelected = Tab:AddDropdown("rebirths", { Values = rebirthsTable(), Default = "1", Multi = false, Text = "Rebirths" })
+local Cost = Tab:AddLabel("nil")
+local RebirthSL = Tab:AddToggle("rebirth", { Text = "Auto rebirth", Default = false })
+
 --[[
 	#### FARMING END
 	###########################################################################################################
@@ -123,10 +128,19 @@ function hatch(name, mode)
       SelectedMode = Option
     end    
   })
-  
-  local Egginfo = Tab2:AddLabel("Triple also equals Six Hatch")
-  
-  local AutoHatch = Tab2:AddToggle({
+--[[	EGG INFO	]]
+local Egginfo = Tab2:AddLabel("Triple also equals 8 Eggs Hatch")
+--[[	DELETE SYSTEM	]]
+local EggDelete = Tab2:AddDropdown("delete_settings", { Values = deleteTable(), Default = "---", Multi = true, Text = "Delete options" })
+local function deleteTable()
+	local items = {}
+	for i, v in pairs(plr.AutoDelete:GetChildren()) do
+		table.insert(items, v.Name)
+	end
+	return items
+end
+
+local AutoHatch = Tab2:AddToggle({
     Name = "Auto Hatch Egg",
     Default = false,
     Callback = function(Value)
@@ -200,6 +214,19 @@ local GetChests = Tab3:AddButton({
     game:GetService("Players").LocalPlayer.Passes.AutoChestCollect.Value = false
   	end    
 })
+
+local GetCodes = Tab3:AddButton({
+	Name = "Collect All Codes",
+	Callback = function()
+		local codesTable = {'heaven', 'wow30000', 'magic', '20kthankyou', 'freeluckboost', 'CYBER', 'wow10klikesthanks',
+	                            'freeclicksomg', 'moon', '5klikesthanks', 'wow2500likes', 'already1500likes',
+	                            'thanks500likes', 'RELEASE', 'void', 'nuclear', 'spooky','75kthanks', 'cave','easter','100kthanks','easter2'}
+	        for _, v in pairs(codesTable) do
+	            rep.Events.Codes:FireServer(v)
+	        end
+    	end)
+})
+
 
 
 local GetPass = Tab3:AddButton({
@@ -418,6 +445,43 @@ local Discord = Tab5:AddButton({
 ]]
 local LabelAFK = Tab5:AddParagraph("Anti AFK","Is Always Active")
   
+-- { Loops } --
+rs.RenderStepped:Connect(function()
+	if Toggles.wheel.Value then
+		if wrk.Scripts.DailySpin.Billboard.BillboardGui.Countdown.Text == "Ready to Claim!" then
+			Spin:InvokeServer()
+		end
+	end
+	if Toggles.upgrade.Value then
+		for i, v in pairs(Options.upgrades.Value) do
+			Upgrade:InvokeServer(i)
+		end
+	end
+	if Toggles.potion.Value then
+		for i, v in pairs(Options.potions.Value) do
+			Potion:FireServer(i)
+		end
+	end
+	Cost:SetText(lpg.MainUI.RebirthFrame.Top.Holder.ScrollingFrame[Options.rebirths.Value].Main.Label.Text)
+	if Toggles.rebirth.Value then
+		Rebirth:FireServer(tonumber(Options.rebirths.Value))
+	end
+	if Toggles.delete.Value then
+		for i, v in pairs(Options.delete_settings.Value) do
+			plr.AutoDelete[i].Value = true
+		end
+		else
+			for i, v in pairs(Options.delete_settings.Value) do
+				plr.AutoDelete[i].Value = false
+			end
+		end
+		if Toggles.auto_craft.Value then
+			rep.Functions.Request:InvokeServer('CraftAll', {})
+		end
+		plr.Character.Humanoid.WalkSpeed = Options.walkspeed.Value
+		plr.Character.Humanoid.JumpHeight = Options.jumppower.Value
+	end)
+end
 OrionLib:MakeNotification({
 	Name = "DevilNetWork Hub!",
 	Content = "Fully Loaded",
