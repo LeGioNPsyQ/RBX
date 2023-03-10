@@ -1,18 +1,4 @@
-repeat wait() until game:IsLoaded() and game.Players and game.Players.LocalPlayer and game.Players.LocalPlayer.Character
-
---[[
-	###########################################################################################################
-	#### Variables
-	###########################################################################################################
-]]
-local plrs = game:GetService("Players")
-local plr = plrs.LocalPlayer
 local Window = OrionLib:MakeWindow({Name = "DevilNetWork Hub", HidePremium = true, SaveConfig = true, ConfigFolder = "DevilNetWorkHub"})
---[[
-	#### Variables END
-	###########################################################################################################
-]]
-
 local TABEVENT1 = Window:MakeTab({
 	Name = "100M Event!",
 	Icon = "rbxassetid://7657243214",
