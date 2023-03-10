@@ -8,28 +8,32 @@ repeat wait() until game:IsLoaded() and game.Players and game.Players.LocalPlaye
 local plrs = game:GetService("Players")
 local plr = plrs.LocalPlayer
 local OrionLib = loadstring(game:HttpGet(('https://raw.githubusercontent.com/LeGioNPsyQ/RBX/main/Variables/Vari.lua')))()
-local Window = OrionLib:MakeWindow({Name = "DevilNetWork Hub", HidePremium = true, SaveConfig = true, ConfigFolder = "DevilNetWorkHub"})
+local Window = OrionLib:MakeWindow({Name = "DevilNetWork Hub", HidePremium = false, SaveConfig = true, ConfigFolder = "DevilNetWorkHub"})
 
 
 --[[
 	###########################################################################################################
 	#### EVENTS
 ]]
-loadstring(game:HttpGet(('https://raw.githubusercontent.com/LeGioNPsyQ/RBX/main/Variables/100MEvent.lua')))()
-local Tab2 = Window:MakeTab({	Name = "Farming",	Icon = "rbxassetid://11911613779",	PremiumOnly = false	})
-local Tab3 = Window:MakeTab({	Name = "Pets",		Icon = "rbxassetid://9194077649",	PremiumOnly = false	})
-local Tab4 = Window:MakeTab({	Name = "Misc I",	Icon = "rbxassetid://9525535512",	PremiumOnly = false	})
-local Tab5 = Window:MakeTab({	Name = "Misc II",	Icon = "rbxassetid://9525535512",	PremiumOnly = false	})
-local Tab6 = Window:MakeTab({	Name = "Information",	Icon = "rbxassetid://5128872300",	PremiumOnly = false	})
+local Tab = Window:MakeTab({	Name = "Farming",	Icon = "rbxassetid://11911613779",	PremiumOnly = false	})
+local Tab2 = Window:MakeTab({	Name = "Pets",		Icon = "rbxassetid://9194077649",	PremiumOnly = false	})
+local Tab3 = Window:MakeTab({	Name = "Misc I",	Icon = "rbxassetid://9525535512",	PremiumOnly = false	})
+local Tab4 = Window:MakeTab({	Name = "Misc II",	Icon = "rbxassetid://9525535512",	PremiumOnly = false	})
+local Tab5 = Window:MakeTab({	Name = "Information",	Icon = "rbxassetid://5128872300",	PremiumOnly = false	})
 --[[
 	#### Variables END
 	###########################################################################################################
 ]]
-local Farm = Tab2:AddSection({
+
+--[[
+	###########################################################################################################
+	#### FARMING (Tab)
+]]
+local Farm = Tab:AddSection({
 	Name = "Main Farming!"
 })
 
-AutoClick = Tab2:AddToggle({
+AutoClick = Tab:AddToggle({
 	Name = "Auto Click",
 	Default = false,
 	Save = true,
@@ -52,7 +56,7 @@ spawn(function()
     end
 end)
 
-local ToggleHighest = Tab2:AddToggle({
+local ToggleHighest = Tab:AddToggle({
 	Name = "Auto Rebirth Highest Unlocked",
 	Default = false,
 	Callback = function(Value)
@@ -64,18 +68,24 @@ local ToggleHighest = Tab2:AddToggle({
 end
 })
 
-local RebirthStatus = Tab2:AddLabel(game:GetService("Players").LocalPlayer.Upgrades.RebirthButtons.Value)
+local RebirthStatus = Tab:AddLabel(game:GetService("Players").LocalPlayer.Upgrades.RebirthButtons.Value)
 
 spawn(function()
   while true do wait()
   RebirthStatus:Set("Rebirth Buttons Unlocked : " .. game:GetService("Players").LocalPlayer.Upgrades.RebirthButtons.Value)
     end
   end)
+--[[
+	#### FARMING END
+	###########################################################################################################
+]]
 
 
-
-------------------------------------------------------------------------------------------------------------------------------
-local Pets = Tab3:AddSection({
+--[[
+	###########################################################################################################
+	#### PETS (Tab2)
+]]
+local Pets = Tab2:AddSection({
 	Name = "Earn Pets!"
 })
 
@@ -95,7 +105,7 @@ function hatch(name, mode)
   end
   
   local eggchoice;
-  local EggChoice = Tab3:AddDropdown({
+  local EggChoice = Tab2:AddDropdown({
     Name = "Select Eggs",
     Default = "Please Select The Eggs",
     Options = EggTable,
@@ -105,7 +115,7 @@ function hatch(name, mode)
   })
   
   local SelectedMode;
-  local SelectMode = Tab3:AddDropdown({
+  local SelectMode = Tab2:AddDropdown({
     Name = "Select Egg Opening Mode",
     Default = "Please Egg Opening Mode",
     Options = {"Single", "Triple"},
@@ -114,9 +124,9 @@ function hatch(name, mode)
     end    
   })
   
-  local Egginfo = Tab3:AddLabel("Triple also equals Six Hatch")
+  local Egginfo = Tab2:AddLabel("Triple also equals Six Hatch")
   
-  local AutoHatch = Tab3:AddToggle({
+  local AutoHatch = Tab2:AddToggle({
     Name = "Auto Hatch Egg",
     Default = false,
     Callback = function(Value)
@@ -127,7 +137,7 @@ function hatch(name, mode)
     end    
   })
 
-  local EggCombo = Tab3:AddLabel(game:GetService("Players").LocalPlayer.PlayerGui.MainUI.EggCombo.Text)
+  local EggCombo = Tab2:AddLabel(game:GetService("Players").LocalPlayer.PlayerGui.MainUI.EggCombo.Text)
 
   spawn(function()
       while true do wait()
@@ -136,11 +146,11 @@ function hatch(name, mode)
       end)
   
 
-local Pets = Tab3:AddSection({
+local Pets = Tab2:AddSection({
 	Name = "Utilize Pets!"
 })
 
-AutoCraft = Tab3:AddToggle({
+AutoCraft = Tab2:AddToggle({
 	Name = "Auto Craft",
 	Default = false,
 	Callback = function(Value)
@@ -151,17 +161,21 @@ AutoCraft = Tab3:AddToggle({
     end
 end
 })
+--[[
+	#### PETS END
+	###########################################################################################################
+]]
 
----------------------------------------------------------------------------------------------------------------
+
 --[[
 	###########################################################################################################
-	#### TAB 4
+	#### Misc I (TAB3)
 ]]
-local Section = Tab4:AddSection({
+local Section = Tab3:AddSection({
 	Name = "Game Miscs"
 })
 
-local Unlock = Tab4:AddButton({
+local Unlock = Tab3:AddButton({
 	Name = "Unlock All Worlds",
 	Callback = function()
     for i, v in pairs(game:GetDescendants()) do
@@ -178,7 +192,7 @@ local Unlock = Tab4:AddButton({
   	end    
 })
 
-local GetChests = Tab4:AddButton({
+local GetChests = Tab3:AddButton({
 	Name = "Collect All Chests",
 	Callback = function()
     game:GetService("Players").LocalPlayer.Passes.AutoChestCollect.Value = true
@@ -188,7 +202,7 @@ local GetChests = Tab4:AddButton({
 })
 
 
-local GetPass = Tab4:AddButton({
+local GetPass = Tab3:AddButton({
   Name = "Get Some Gamepass",
   Callback = function()
 		for i, v in pairs(plr.Passes:GetChildren()) do
@@ -206,17 +220,17 @@ local GetPass = Tab4:AddButton({
   end
 })
 
-local GetPassNote = Tab4:AddLabel("Gets Auto Clicker, Auto Rebirth, Teleport + Auto Upgrades Them To Max")
+local GetPassNote = Tab3:AddParagraph("NEW NEW NEW","Unlock all Gamepass :D")
 
 
-local ClaimDailySpin = Tab4:AddButton({
+local ClaimDailySpin = Tab3:AddButton({
   Name = "Auto Daily Spin",
   Callback = function()
 game:GetService("ReplicatedStorage").Functions.Spin:InvokeServer()
   end
 })
 
-local WhiteScreen = Tab4:AddToggle({
+local WhiteScreen = Tab3:AddToggle({
 	Name = "White Screen [ CPU Saver ]",
 	Default = false,
 	Callback = function(Value)
@@ -233,20 +247,20 @@ local WhiteScreen = Tab4:AddToggle({
 	end    
 })
 
-local ServerMisc = Tab4:AddSection({
+local ServerMisc = Tab3:AddSection({
   Name = "Server Miscs"
   })
 
-local RejoinsServer = Tab4:AddButton({
+local RejoinsServer = Tab3:AddButton({
   Name = "Rejoin",
   Callback = function()
     game:GetService("TeleportService"):TeleportToPlaceInstance(game.PlaceId, game.JobId, game:GetService("Players").LocalPlayer)
   end
 })
 
-local LabelHop = Tab4:AddLabel("Lower Server Hop Taken From V3rm. Credits to owner")
+local LabelHop = Tab3:AddLabel("Lower Server Hop Taken From V3rm. Credits to owner")
 
-local LowerServer = Tab4:AddButton({
+local LowerServer = Tab3:AddButton({
   Name = "Hop To Lower Player",
   Callback = function()
     local PlaceID = game.PlaceId
@@ -325,18 +339,21 @@ for i,v in pairs(getconnections(game.Players.LocalPlayer.Idled)) do
     v:Disable()
   end
 --[[
-	#### TAB 4 END
+	#### MICS I (TAB3) END
 	###########################################################################################################
 ]]
 
----------------------------------------------------------------------------------------------------------------
 
+--[[
+	###########################################################################################################
+	#### MISC II (TAB4)
+]]
 
-local Section = Tab5:AddSection({
+local Section2 = Tab4:AddSection({
 	Name = "Player Miscs"
 })
 
-local Slider = Tab5:AddSlider({
+local Slider = Tab4:AddSlider({
 	Name = "Walk Speed",
 	Min = 16,
 	Max = 400,
@@ -349,7 +366,7 @@ local Slider = Tab5:AddSlider({
 	end    
 })
 
-local Gravity = Tab5:AddSlider({
+local Gravity = Tab4:AddSlider({
 	Name = "Gravity",
 	Min = 1,
 	Max = 1000,
@@ -362,7 +379,7 @@ local Gravity = Tab5:AddSlider({
 	end    
 })
 
-local FOV = Tab5:AddSlider({
+local FOV = Tab4:AddSlider({
 	Name = "Field Of View (FOV)",
 	Min = 10,
 	Max = 120,
@@ -377,16 +394,16 @@ local FOV = Tab5:AddSlider({
 -------------------------------------------------------------------------------------------------------------------
 
 
-local UPDATE = Tab6:AddSection({		Name = "UPDATE Information!"		})
-local UPD = Tab6:AddParagraph("Gamepass Unlock!","The Gamepass will be completely unlocked")
+local UPD1 = Tab5:AddSection({		Name = "UPDATE Information!"		})
+local UPD2 = Tab5:AddParagraph("Gamepass Unlock!","The Gamepass will be completely unlocked")
 
 
-local INFO = Tab6:AddSection({		Name = "General Information!"		})
-local BeGonefield1 = Tab6:AddParagraph("Script Window","Hit The - Button To Minimize And The X Button To Close The Script")
-local BeGonefield2 = Tab6:AddParagraph("Script Window","Hit The - Button To Minimize And The X Button To Close The Script")
+local INFO = Tab5:AddSection({		Name = "General Information!"		})
+local INFO1 = Tab5:AddParagraph("Script Window","Hit The - Button To Minimize And The X Button To Close The Script")
+local INFO2 = Tab5:AddParagraph("COMING SOON","Discord, Owner-Nickname,Design")
 
 --[[
-local Discord = Tab6:AddButton({
+local Discord = Tab5:AddButton({
 	Name = "Join The Discord!",
 	Callback = function()
     setclipboard("https://discord.gg/JEDCJDBbg3")
@@ -399,7 +416,7 @@ local Discord = Tab6:AddButton({
   end
 })
 ]]
-local LabelAFK = Tab6:AddLabel("Anti AFK Is Always Active")
+local LabelAFK = Tab5:AddParagraph("Anti AFK","Is Always Active")
   
 OrionLib:MakeNotification({
 	Name = "DevilNetWork Hub!",
