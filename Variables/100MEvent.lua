@@ -7,7 +7,7 @@ repeat wait() until game:IsLoaded() and game.Players and game.Players.LocalPlaye
 ]]
 local plrs = game:GetService("Players")
 local plr = plrs.LocalPlayer
-local OrionLib = loadstring(game:HttpGet(('https://raw.githubusercontent.com/LeGioNPsyQ/RBX/main/Variables/Vari.lua')))()
+local Window = OrionLib:MakeWindow({Name = "DevilNetWork Hub", HidePremium = true, SaveConfig = true, ConfigFolder = "DevilNetWorkHub"})
 --[[
 	#### Variables END
 	###########################################################################################################
