@@ -1,5 +1,4 @@
- do
-	local checker = pcall(function()
+ local checker = pcall(function()
         games = game:HttpGet("https://raw.githubusercontent.com/LeGioNPsyQ/RBX/main/Games/" .. game.PlaceId .. ".lua")
     end)
     if checker then
