@@ -19,7 +19,6 @@ _EggDELLegendary = false
 	##	TIMER
 ]]
 local RebirthTimer = "5"
-local HatchTimer = "5"
 --[[
 	##	GUI LOAD LOCAL
 ]]
@@ -63,10 +62,6 @@ local Window = OrionLib:MakeWindow({
 ]]
 local Main = Window:MakeTab({Name = "Main",Icon = "rbxassetid://7733765398",PremiumOnly = false})
 local Pets = Window:MakeTab({Name = "Pets",Icon = "rbxassetid://8997385940",PremiumOnly = false})
--- local Rebirth = Window:MakeTab({Name = "Rebirth",Icon = "rbxassetid://7733942651",PremiumOnly = false})
--- local Teleport = Window:MakeTab({Name = "Teleport",Icon = "rbxassetid://7733954760",PremiumOnly = false})
--- local Keybinds = Window:MakeTab({Name = "Keybinds",Icon = "rbxassetid://4483345998",PremiumOnly = false})
--- local Misc = Window:MakeTab({Name = "Misc",Icon = "rbxassetid://4515645493",PremiumOnly = false})
 local Credits = Window:MakeTab({Name = "Credits",Icon = "rbxassetid://4503342956",PremiumOnly = false})
 local mr = game.Players.LocalPlayer.Character.HumanoidRootPart
 
@@ -227,203 +222,6 @@ function EggA()
 		wait(HatchInterval)
     end
 end
---[[
-Main:AddToggle({
-	Name = "🎁 Auto Airdrop",
-	Value = false,
-	Flags = "AutoAirdrop",
-	Callback = function()
-		getgenv().AC = bool
-		if bool then
-			Airdrop()
-		end
-	end,
-})
-function Airdrop()
-	while AC == true do 
-		if not getgenv then break end 
-		game:GetService("ReplicatedStorage").GameClient.Events.RemoteEvent["Airdrop Pickup"]
-	end
-end
-]]
---#########################################################################################################
---##	PETS
---#########################################################################################################
--- Pets:AddSection({Name = "Auto Eggs"})
-
--- local eggLocation = {
-	-- ["Basic Egg"] = Vector3.new(797, 887, 110),
-	-- ["Wild Egg"] = Vector3.new(820, 887, 104),
-	-- ["Galactic Egg (SPAWN)"] = Vector3.new(838.312, 891.717, 124.254),
-	-- ["Snowfall Egg"] = Vector3.new(814, 887, -155),
-	-- ["Beachball Egg"] = Vector3.new(1094, 889, -344),
-	-- ["Sunshine Egg"] = Vector3.new(1095, 889, -333),
-	-- ["Pail Egg"] = Vector3.new(1083, 889, -331),
-	-- ["Ninja Egg"] = Vector3.new(1216, 887, -687),
-	-- ["Glacier Egg"] = Vector3.new(808, 887, -144),
-	-- ["Yokai Egg"] = Vector3.new(1233, 887, -706),
-	-- ["Busy City Egg"] = Vector3.new(1560, 887, -842),
-	-- ["Technology Egg"] = Vector3.new(1578, 888, -854),
-	-- ["Village Egg"] = Vector3.new(1731, 888, -1239),
-	-- ["Queen's Jewel Egg"] = Vector3.new(1743, 887, -1259),
-	-- ["UFO Egg"] = Vector3.new(1660, 888, -1629),
-	-- ["Futuristic Egg"] = Vector3.new(1659, 888, -1645),
-	-- ["Leprachaun Egg"] = Vector3.new(1672, 887, -1695),
-	-- ["Clockwork Egg"] = Vector3.new(1412.24, 891.128, -1823.75),
-	-- ["Gingerbread Egg"] = Vector3.new(1225.36, 890.482, -2280.11),
-	-- ["Whipped Kitty Egg"] = Vector3.new(1230.54, 890.598, -2254.28),
-	-- ["Galactic Egg"] = Vector3.new(1069, 880, -2370),
-	-- [""] = Vector3.new(),
-	-- [""] = Vector3.new(),
-	-- [""] = Vector3.new(),
--- }
--- local selectedEggPosition = eggLocation["Basic Egg"]
--- local selectedEgg
--- Pets:AddDropdown({
-   -- Name = "Choose Egg",
-   -- Options = {"Basic Egg","Wild Egg","Galactic Egg (Spawn)","Snowfall Egg","Glacier Egg","Beachball Egg","Sunshine Egg","Pail Egg","Ninja Egg","Yokai Egg","Busy City Egg","Technology Egg","Queen's Jewel Egg","Village Egg","UFO Egg","Futuristic Egg","Leprachaun Egg","Galactic Egg"},
-   -- CurrentOption = "--",
-   -- Callback = function(value)
-    -- selectedEgg = value
-    -- selectedEggPosition = eggLocation[value] 
-   -- end,
--- })
--- Pets:AddDropdown({
-	-- Name = "🔢 Select Amount",
-	-- Options = {"1","3","8"},
-	-- Option = "1",
-	-- Flag = "EggAmount",
-	-- Callback = function(value)
-	-- if value == "1" then
-		-- EggAmount = string.gsub(value,"1","Buy1")
-	-- elseif value == "3" then
-		-- EggAmount = string.gsub(value,"3","Buy3")
-	-- elseif value == "8"
-		-- then EggAmount = string.gsub(value,"8","Buy8")
-	-- end
--- end,
--- })
-  
--- function openE()
-	-- mr.CFrame = CFrame.new(selectedEggPosition)
-	-- while OE == true do if not getgenv() then break end
-	-- local args = {
-		-- [1] = selectedEgg,
-		-- [2] = EggAmount,
-	-- }
-		-- game:GetService("ReplicatedStorage"):WaitForChild("GameClient"):WaitForChild("Events"):WaitForChild("RemoteFunction"):WaitForChild("BuyEgg"):InvokeServer(unpack(args))     
-		-- game:GetService("ReplicatedStorage"):WaitForChild("Marchy"):WaitForChild("PetRemotes"):WaitForChild("Generic"):WaitForChild("CraftAll"):FireServer()
-		-- wait(HatchTimer)
-	-- end
--- end
-
--- Pets:AddToggle({
-    -- Name = "Auto Open Selected Egg (Stay Close)",
-    -- CurrentValue = false,
-    -- Callback = function(bool)
-     -- getgenv().OE = bool
-     -- if bool then
-         -- openE()
-     -- end
-    -- end,
- -- })
--- Pets:AddToggle({
-	-- Name = "🛠️ Auto Craft",
-	-- CurrentValue = false,
-	-- Callback = function(bool)
-		-- getgenv().CA = bool
-		-- if bool then
-			-- openCA()
-		-- end
-	-- end,
--- })
--- function openCA()
-	-- while CA == true do if not getgenv() then break end
-		-- game:GetService("ReplicatedStorage"):WaitForChild("Marchy"):WaitForChild("PetRemotes"):WaitForChild("Generic"):WaitForChild("CraftAll"):FireServer() wait(0.5)
-	-- end
--- end
-
--- Pets:AddToggle({
-	-- Name = "🏆 Auto Equip Best",
-	-- CurrentValue = false,
-	-- Callback = function(bool)
-		-- getgenv().EB = bool
-		-- if bool then
-			-- openEB()
-		-- end
-	-- end,
--- })
--- function openEB()
-	-- while EB == true do if not getgenv() then break end
-        -- game:GetService("ReplicatedStorage"):WaitForChild("Marchy"):WaitForChild("PetRemotes"):WaitForChild("Generic"):WaitForChild("EquipBest"):FireServer()   
-	-- end
--- end
--- ################################################################################################################################################
-
-
--- ##	Auto Rebirth
--- local SetRebirth
--- Rebirth:AddSection({Name = "Rebirth"})
--- Rebirth:AddDropdown({
-	-- Name = "🔢 Rebirth",
-	-- Options = Rebirths,
-	-- Default = "33",
-	-- Flag = "Rebirths",
-	-- Callback = function(value)
-		-- SetRebirth = value
-	-- end,
--- })	
--- Rebirth:AddToggle({
-	-- Name = "🔁 Auto Rebirth",
-	-- CurrentValue = false,
-	-- Default = false,
-	-- Callback = function(bool)
-		-- getgenv().DR = bool
-		-- if bool then
-			-- doR()
-		-- end
-	-- end,
- -- })
--- function doR()
-    -- while DR == true do
-      -- if not getgenv then break end
-	-- local args = SetRebirth
-	-- game:GetService("ReplicatedStorage").Events.Rebirth:FireServer(SetRebirth)
-      -- wait(0)        
-    -- end
--- end
--- Rebirth:AddButton({
-	-- Name = "Remove Alert",
-	-- Callback = function()
-		-- for _, players in pairs(game:GetService("Players"):GetChildren()) do -- Get the players
-			-- players.PlayerGui.AlertUI:Destroy() -- Destroy the Guis
-		-- end
-		-- game:GetService('Players').LocalPlayer:WaitForChild('PlayerGui')
-	-- end,
- -- })
- --[[
--- Main:AddButton({
-	-- Name = "Kill All (Requires Hex Spitter)",
-	-- Callback = function()
-		-- local HexSpitter = P.LocalPlayer.Character.HexSpitter
-		-- local ServerControl = HexSpitter.Remotes.ServerControl
-		-- for _ = 1,20 do
-			-- for _, Child in next, game.Players:GetPlayers() do
-				-- if Child ~= game.Players.LocalPlayer then
-					-- ServerControl:InvokeServer('RayHit', {['Position'] = Vector3.new(0, 0, 0), ["Hit"] = Child.Character.Head})
-				-- end
-			-- end
-		-- end
-	-- OrionLib:MakeNotification({
-		-- Name = "GUI",
-		-- Content = "Killed everyone ;)",
-		-- Image = "rbxassetid://4483345998",
-		-- Time = 3
-	-- })
-	-- end    
--- })
--- ]]
-
 ---//MISC
 Misc:AddSlider({
 	Name = "Walkspeed",
@@ -449,30 +247,6 @@ Misc:AddSlider({
 		game:GetService('Workspace')[Name].Humanoid.JumpPower = Value
 	end 
 })
-Misc:AddSlider({
-	Name = "HipHeight",
-	Min = 3,
-	Max = 500,
-	Default = 0,
-	Increment = 1,
-	ValueName = "HipHeight",
-    Color = Color3.fromRGB(253, 17, 17),
-	Callback = function(Value)
-		game:GetService('Workspace')[Name].Humanoid.HipHeight = Value
-	end
-})
-Misc:AddSlider({
-	Name = "Gravity",
-	Min = 0,
-	Max = 500,
-	Default = 200,
-	Increment = 1,
-	ValueName = "Gravity",
-    Color = Color3.fromRGB(242, 249, 148),
-	Callback = function(Value)
-		workspace.Gravity = Value
-	end
-})
 Misc:AddTextbox({
 	Name = "Teleport to player",
 	Default = "Player Name",
@@ -484,88 +258,13 @@ Misc:AddTextbox({
         TPToPlayer()
 	end	  
 })
-Misc:AddButton({
-	Name = "Teleport to VoidBlock",
-	Callback = function()
-        local function GetNiggered()
-            game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = workspace.CenterBlocks.Givers.VoidGiver.GUI.CFrame
-        end
-        GetNiggered()
-	end
-})
-Misc:AddButton({
-	Name = "Teleport to Safe spot",
-	Callback = function()
-        local function Cute()
-            game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = workspace.Wedge.CFrame
-        end
-        Cute()
-	end
-})
-Misc:AddButton({
-	Name = "Teleport to Base",
-	Callback = function()
-		local function Run()
-			game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = Spawn.Value
-		end
-		Run()
-	end
-})
-Misc:AddButton({
-	Name = "Delete Trees",
-	Callback = function()
-        for _, Tree in next, game.Workspace:GetChildren() do
-            if Tree.Name == 'Tree' then
-                Tree:Destroy()
-            end
-        end
-	end
-})
---[[
----//Keybinds
-Keybinds:AddBind({
-	Name = "Lucky Block",
-	Default = Enum.KeyCode.Q,
-	Callback = function()
-		ReplicatedStorage.SpawnLuckyBlock:FireServer()
-	end    
-})
-Keybinds:AddBind({
-	Name = "Super Block",
-	Default = Enum.KeyCode.E,
-	Callback = function()
-		ReplicatedStorage.SpawnSuperBlock:FireServer()
-	end    
-})
-Keybinds:AddBind({
-	Name = "Diamond Block",
-	Default = Enum.KeyCode.R,
-	Callback = function()
-		ReplicatedStorage.SpawnDiamondBlock:FireServer()
-	end    
-})
-Keybinds:AddBind({
-	Name = "Rainbow Block",
-	Default = Enum.KeyCode.T,
-	Callback = function()
-		ReplicatedStorage.SpawnRainbowBlock:FireServer()
-	end    
-})
-Keybinds:AddBind({
-	Name = "Galaxy Block",
-	Default = Enum.KeyCode.Y,
-	Callback = function()
-		ReplicatedStorage.SpawnGalaxyBlock:FireServer()
-	end    
-})
-]]
 
 ---//Credits 
 Credits:AddButton({
 	Name = "💭 Copy link to Discord",
 	icon = "rbxassetid://7733954760",
 	Callback = function()
-      	setclipboard('https://discord.gg/5Fy4H82TCq')
+      	setclipboard('https://discord.gg/tJtY47NZ5z')
 	end
 })
 Credits:AddLabel("Made by LeGioN_PsyQ#3114")
@@ -575,9 +274,8 @@ Credits:AddParagraph(
 )
 Credits:AddParagraph(
 	"DevilNetWork v1.0",
-	"Is a Script from Testiing on LUA-Codiung	 	 	 	 	 	 	 	 	 	 	 	 	 	 	 	 	 	 	 	 	 	 	 		 	 	 	 	 	 DevilNetWork Owner © LeGioN_PsyQ"
+	"Is a Script from Testing on LUA-Codiung	 	 	 	 	 	 	 	 	 	 	 	 	 	 	 	 	 	 	 	 	 	 	 		 	 	 	 	 	 DevilNetWork Owner © LeGioN_PsyQ"
 )
-Credits:AddParagraph("Paragraph","Paragraph Content")
 
 
 OrionLib:MakeNotification({
